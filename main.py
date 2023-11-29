@@ -1,19 +1,29 @@
-#Group 8 - Lucas Nguyen
-#CECS 277 - Lab 12
-
 import random
-import check_input
 import hero
 import map
 import beg_factory
 import exp_factory
+
+def input_get_range(prompt, low, high):
+  val = 0
+  valid = False
+  while not valid:
+    try:
+      val = int(input(prompt))
+      if val >= low and val <= high:
+        valid = True
+      else:
+        print("Invalid input - should be within range " + str(low) + "-" + str(high) + ".")
+    except ValueError:
+      print("Invalid input - should be an integer.")
+  return val
 
 def main():
   '''The user navigates a grid in hopes of finding the finish whose location is unknown. They can encounter enemies that attack and Health Potions that heal them.'''
   #The player chooses their name and difficulty.
   name = input("What is your name, traveler? ")
   difficulty = "Difficulty:\n1. Beginner\n2. Expert\n"
-  difficulty = check_input.get_int_range(difficulty, 1, 2)
+  difficulty = input_get_range(difficulty, 1, 2)
 
   #Creates the hero object and map object.
   heroObject = hero.Hero(name)
@@ -36,7 +46,7 @@ def main():
 
     #The hero is prompted which direction they want to go and the option to quit.
     choice = "1. Go North\n2. Go South\n3. Go East\n4. Go West\n5. Quit\nEnter choice: "
-    choice = check_input.get_int_range(choice, 1, 5)
+    choice = input_get_range(choice, 1, 5)
     positionValue = None
   
     if (choice == 1):
@@ -77,7 +87,7 @@ def main():
       print("You encounter a ", end=f"{enemyObject}")
       while True:
         attackChoice = f"\n1. Attack {enemyObject._name}\n2. Run Away\nEnter choice: "
-        attackChoice = check_input.get_int_range(attackChoice, 1, 2)
+        attackChoice = input_get_range(attackChoice, 1, 2)
         #Attack
         if (attackChoice == 1):
           print(heroObject.attack(enemyObject))
