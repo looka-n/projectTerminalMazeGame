@@ -1,6 +1,8 @@
 # 2D Maze Game
 ## Description
 The user plays a game on the terminal to traverse a 2D grid of rooms, with its contents being unknown. Each room may contain lurking danger, useful items, or maybe nothing at all. The goal is to get to the finish, located somewhere within the maze.
+## Installation
+Simply download the repository and run main.py
 ## How to play
 Use number inputs to take action presented through the terminal. Every turn allows a player to take an action, which results in a consequential event within the game.
 ### Name your character
